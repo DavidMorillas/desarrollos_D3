@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>  
+
+    <title>TFCA Exercises D3.js</title>
+    <meta charset="utf-8">
+
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+
+    <style>
+    </style>
+</head>
+<body>
+
+<script type="text/javascript">
+var svg = d3.select("body")
+  .append("svg")
+  .attr("width", 500)
+  .attr("height", 200);
+  
+var data1 = [[[20,30],[40,50]], [[50,100],[80,150]], [[200,30],[400,100]]];
+var data2 = [[80,40,20], [150,140,40], [270,130,10]];
+
+var rects = svg.selectAll("foo")
+  .data(data1)
+  .enter()
+  .append("rect")
+  .attr("x", d=> d[0][0])
+  .attr("y", d=> d[0][1])
+  .attr("width", d=> d[1][0] - d[0][0])
+  .attr("height", d=> d[1][1] - d[0][1])
+  .attr("fill", "green")
+  .transition()
+  .delay(500)
+  .attr("transform", "translate(40,0)")
+  .transition()
+  .delay(500)
+  .attr("transform", "translate(0,0)");
+
+
+var circles = svg.selectAll("foo")
+  .data(data2)
+  .enter()
+  .append("circle")
+  .attr("cx", d=> d[0])
+  .attr("cy", d=> d[1])
+  .attr("r", d=> d[2])
+  .attr("fill", "blue")
+  .transition()
+  .delay(1500)
+  .attr("fill", "red")
+  .transition()
+  .delay(1500)
+  .attr("fill", "blue");
+
+</script>
+
+</body>
+</html>
